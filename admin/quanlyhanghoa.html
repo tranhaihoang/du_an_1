@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css-css/style.css">
+    <link rel="stylesheet" href="css-css/rps.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+        <link
+      rel="stylesheet"
+      href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"
+    />
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar_head">
+                <img src="../img/logo.jpg" alt="" width="70" height="43">
+            </div>
+
+            <div class="tongquan">
+                <a href="../view/index.php">
+                    <li class="menu-item sidebar-text-thin" aria-haspopup="true">
+                        <i class="fa-solid fa-square-poll-vertical"></i> Tổng quan
+                    </li>
+                </a>
+            </div>
+
+            <div class="tongquan">
+                <a href="../../layout/index.php">
+                    <li class="menu-item" aria-haspopup="true">
+                        <i class="fa-solid fa-globe"></i> CITY VIEW
+                    </li>
+                </a>
+            </div>
+
+            <span class="quanly">QUẢN LÝ</span>
+            <div class="list">
+                <ul>
+                    <a href="../ql_loaiphong/list.php" class="menu-link">
+                        <li class="menu-item" aria-haspopup="true">
+                            <p class=""><i class="fa-solid fa-list"></i> Quản lý Shop</p>
+                        </li>
+                    </a>
+                    <a href="../ql_phong/list.php" class="menu-link">
+                        <li class="menu-item" aria-haspopup="true">
+                            <p class=""><i class="fa-solid fa-list"></i> Quản lý tài khoản</p>
+
+                        </li>
+                    </a>
+                    <a href="./index.php?act=list_dichvu" class="menu-link">
+                        <li class="menu-item" aria-haspopup="true">
+                            <p class=""><i class="fa-solid fa-list"></i> Quản lý danh mục</p>
+
+                        </li>
+                    </a>
+                    <a href="../ql_binhluan/list.php" class="menu-link">
+                        <li class="menu-item" aria-haspopup="true">
+                            <p class=""><i class="fa-solid fa-list"></i> Quản lý hàng hóa</p>
+
+                        </li>
+                    </a>
+                    <a href="../ql_taikhoan/list.php" class="menu-link">
+                        <li class="menu-item" aria-haspopup="true">
+                            <p class=""><i class="fa-solid fa-list"></i> Thống kê số lượng bán</p>
+
+                        </li>
+                    </a>
+                    <a href="../ql_hoadon/list.php" class="menu-link">
+                        <li class="menu-item" aria-haspopup="true">
+                            <p class=""><i class="fa-solid fa-list"></i> Quản lý đơn hàng</p>
+
+                        </li>
+                    </a>
+                </ul>
+            </div>
+        </div>
+
+        <main>
+          <div class="main-content">
+            <div class="tab-title">
+              <span class="manager">Trang quản trị</span>
+              <img src="../img/logo.jpg" alt="" class="logo-rps" style="width:100px;">
+              <span class="name-user">Hi, Admin</span>
+
+            </div>   
+          </div>
+
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                  <h3 class="tile-title"> Quản lý hàng hóa</h3>
+              </div>
+              
+            </div>
+            
+            <div class="row">
+              <div class="col-md-12 ">
+                <div class="col-xs-3">
+                  <a href="them-sp.html"><i class="fas fa-plus"></i>Thêm mới</a>
+                </div>
+                <div class="col-xs-3">
+                  <a><i class="fa fa-list" aria-hidden="true"></i> Danh Mục</a>
+                </div>
+              </div>
+              <div class="col-md-12 ">
+                <div class="dataTables_length" id="sampleTable_length">
+                  <label>Danh mục                                  
+                    <select>
+                          <option value="10">Tất cả</option>
+                          <option value="25">25</option>
+                          <option value="50">50</option>
+                          <option value="100">100</option>
+                    </select>
+                    <input type="submit" value="Tìm kiếm" name="">
+                      
+                  </label>
+                </div>
+              </div>
+            </div>
+            
+            <div class="row">
+              
+            </div>         
+            <div class="container">        
+              <div class="row">
+                <table class="col-md-12">
+                                
+                    <tr >
+                      <th> STT</th>
+                      <th>ID</th>
+                      <th>Danh Mục</th>
+                      <th>Tên</th>
+                      <th> Giá</th>
+                      <th>Giảm giá</th>
+                      <th>Số lượng</th>
+                      <th>Hình ảnh</th>
+                      <th>Trạng thái</th>
+                      <th>Hành Động</th>
+                    </tr>
+                  
+                  
+                 
+                    <tr role="row" class="odd">
+                      <td class="sorting_1">1</td>
+                      <td>53</td>
+                      <td>Bánh ngọt</td>
+                      <td>bánh kẹo ngọt</td>
+                      <td>2165400</td>
+                      <td>20</td>
+                      <td>30</td>
+                      <td><img src=""alt=""height="50px;"/></td>
+                      <td>Có sẵn</td>
+                      <td>
+                        <button type="button"><i class="fas fa-trash-alt"></i></button>
+                        <a href="#"type="button"><i class="fas fa-edit"></i></a>
+                      </td>
+                    </tr>
+
+                    <tr role="row" class="odd">
+                      <td class="sorting_1">1</td>
+                      <td>53</td>
+                      <td>Bánh ngọt</td>
+                      <td>bánh kẹo ngọt</td>
+                      <td>2165400</td>
+                      <td>20</td>
+                      <td>30</td>
+                      <td><img src=""alt=""height="50px;"/></td>
+                      <td>Có sẵn</td>
+                      <td>
+                        <button type="button"><i class="fas fa-trash-alt"></i></button>
+                        <a href="#"type="button"><i class="fas fa-edit"></i></a>
+                      </td>
+                    </tr>
+                  
+
+                </table>                         
+              </div>
+            </div>
+              
+           
+          </div>
+        </main>
+        
+
+
+        <script>
+            let link = document.querySelectorAll(".act-list")
+    
+            link.forEach(element => {
+                element.onclick = () => {
+                    link.forEach(nav => {
+                        nav.classList.remove("sidebar-text-thin");
+                    })
+                    element.classList.add("sidebar-text-thin");
+                }
+            })
+    
+    
+    
+            let close = document.querySelector(".delete")
+            let menu = document.querySelector(".sidebar")
+            let bar = document.querySelector("span.bar")
+            let icon = document.querySelector("span.bar i")
+            bar.onclick = () => {
+                menu.classList.toggle("off")
+            let isIcon = menu.classList.contains('off')
+            icon.classList = isIcon ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'
+                close.style.display = "block"
+            }
+    
+            close.onclick = () => {
+                menu.classList.toggle("off")
+                let isIcon = menu.classList.contains('off')
+                icon.classList = isIcon ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'
+                close.style.display = "none"
+    
+            }
+    
+    
+    
+        </script>
+    
+    </body>
+    
+    </html>

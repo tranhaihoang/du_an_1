@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+.slide-show button {
+    color: white;
+    position: absolute;
+    padding: 10px;
+    background: rgba(24, 2, 2, 0.836);
+    border: 0;
+    z-index: 3;
+    height: 100px;
+    opacity: 1;
+    cursor: pointer;
+}
+
+#btnBack {
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+#btnNext {
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+}
+
+.main {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+.bao {
+    margin-top: 3rem;
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.text-nd {
+    text-align: center;
+    margin: 20px 0px;
+}
+
+form div {
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+table {
+    caption-side: bottom;
+    border-collapse: collapse;
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+th,
+td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+tfoot td {
+    font-weight: bold;
+}
+
+.moneySP {
+    font-weight: bold;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+.btngui {
+    text-align: center;
+}
+
+.btn-primary {
+    margin-top: 10px;
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #45a049;
+}
+
+.thanhpho {
+    display: flex;
+    margin: 10px;
+}
+
+.thanhpho input {
+    margin-left: 20px;
+}
+</style>
+  </head>
+<!-- Sản phẩm start -->
+  <body>
+    <div class="main">
+      <div class="bao">
+        <div class="text-nd">
+          <h2>Sản phẩm</h2>
+        </div>
+        <div>
+          <label>Tên khách hàng</label>
+          <input class="form" type="text" id="nameKH" />
+          <p class="error"></p>
+        </div>
+        <div>
+          <label>Số điện thoại</label>
+          <input class="form" type="text" id="phoneKH" />
+          <p class="error"></p>
+        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>STT</th>
+              <th>Tên</th>
+              <th>Giá</th>
+              <th>Số lượng</th>
+              <th>Thành tiền</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Bánh ngọt phomai</td>
+              <td><input type="number" class="dongia" /></td>
+              <td><input type="number" class="soluong" /></td>
+              <td class="thanhtien"></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Sukem phomai</td>
+              <td><input type="number" class="dongia" /></td>
+              <td><input type="number" class="soluong" /></td>
+              <td class="thanhtien"></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Trà sữa</td>
+              <td><input type="number" class="dongia" /></td>
+              <td><input type="number" class="soluong" /></td>
+              <td class="thanhtien"></td>
+            </tr>
+            <tr>
+              <td colspan="4">Tổng tiền</td>
+              <td id="totalMoney"></td>
+            </tr>
+          </tbody>
+        </table>
+        <div>
+          <span>Nơi nhận hàng</span>
+          <div class="thanhpho">
+            <input type="radio" name="ship" id="noithanh" />
+            <label for="noithanh">Nội thành</label>
+            <input type="radio" name="ship" id="ngoaithanh" />
+            <label for="ngoaithanh">Ngoại thành</label>
+          </div>
+        </div>
+        <div>
+          <label>Phí vận chuyển</label>
+          <input class="form" disabled type="text" id="phivanchuyen" />
+        </div>
+        <p class="error"></p>
+        <p class="error"></p>
+        <div class="btngui">
+          <button class="btn-primary" id="btnSubmit">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+    </div>
+<!-- Sản phẩm end -->
+
+<!-- Giỏ hàng start -->
+
+    <div class="container">
+      <div class="row">
+        <div class="bao">
+          <div class="text-nd">
+            <h2>Giỏ hàng</h2>
+          </div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>STT</th>
+                <th>Tên khách hàng</th>
+                <th>Số điện thoại</th>
+                <th>Tổng tiền</th>
+                <th>Phí vận chuyển</th>
+              </tr>
+            </thead>
+            <!-- renderUI được lấy sang JS để in HTML khi người dùng nhấn thêm vào giỏ hàng -->
+            <tbody class="renderUI"></tbody>
+            <!-- Sau khi xử lí in ra HTML người dùng nhấn đặt hàng thì mới lấy dữ liệu được in ra để thêm vào CSDL -->
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="bao"></div>
+    <!-- Giỏ hàng end -->
+<script>
+        // Lấy các class bên html
+    var namekh = document.querySelector("#nameKH") //input tên khách hàng
+    var sdt = document.querySelector("#phoneKH") //input số điện thoại khách hàng
+    var btnsubmit = document.querySelector("#btnSubmit") //Thêm vào giỏ hàng
+    var error = document.querySelectorAll(".error") //Thông báo lỗi
+    var totalmoney = document.querySelector("#totalMoney") //Tổng tiền các sản phẩm
+
+    //Sản phẩm
+
+    var dongia = document.querySelectorAll(".dongia") //Đơn giá sản phẩm
+    var soluong = document.querySelectorAll(".soluong") //Số lượng sản phẩm
+    var thanhtien = document.querySelectorAll(".thanhtien") //Thành tiền = giá + số lượng sản phẩm
+
+    // Hàm xử lý sự kiện thay đổi giá và số lượng để tự động cập nhật đơn giá và tính tổng tiền khi mua hàng
+    for(let i = 0; i< dongia.length; i++){
+        dongia[i].addEventListener("change", function() {
+            if(dongia[i].value != "" && soluong[i].value != ""){
+                let money = Number(dongia[i].value) * Number(soluong[i].value)
+                thanhtien[i].textContent = money
+                tongTien()
+            }
+        })
+        soluong[i].addEventListener("change", function() {
+            if(dongia[i].value != "" && soluong[i].value != ""){
+                let money = Number(dongia[i].value) * Number(soluong[i].value)
+                thanhtien[i].textContent = money
+                tongTien()
+            }
+        })
+
+    }
+
+    //Hàm tính toán lại tổng tiền khi có sự thay đổi giá hoặc số lượng ở các sản phẩm.
+
+    function tongTien(){
+        let tong = 0
+        for(let i = 0; i< thanhtien.length; i++){
+            tong += Number(thanhtien[i].textContent)
+        }
+        totalmoney.textContent = tong
+    }
+
+    // Hàm Khi nhấn thêm vào giỏ hàng kiểm tra các trường rồi in html giỏ hàng
+    // Xử lí chức năng chính
+    btnsubmit.addEventListener("click", function() {
+        for(let i = 0; i< error.length; i++){
+            error[i].textContent = ""
+        }
+        
+        if(checkEmpty()){
+            if(checkLength()){
+                show()
+                xoavalue()
+            }
+        }
+        
+    })
+
+
+    //Khi thêm vào giỏ hàng xog reset các input trên sản phẩm
+    function xoavalue(){
+        namekh.value = "";
+        sdt.value = "";
+        for (let i = 0; i <= 2; i++) {
+            dongia[i].value = "";
+            soluong[i].value = "";
+            thanhtien[i].textContent = "";
+            totalmoney.textContent = "";
+        }
+        document.querySelector("input[name='ship']:checked").checked = false;
+        phivanchuyen.value = "";
+    }
+
+    // Hàm check các input
+    function checkEmpty(){
+        let check = true;
+        if(namekh.value == ""){
+            error[0].textContent = "Không được để trống tên khách hàng"
+            check = false
+        }
+        if(sdt.value == ""){
+            error[1].textContent = "Không được để trống số điện thoại khách hàng"
+            check = false
+        }
+        return check
+    }
+
+    //Hàm check độ dài input
+    function checkLength(){
+        let check = true;
+        if(namekh.value.length < 3){
+            error[0].textContent = "Tên khách hàng lớn hơn 3 ký tự"
+            check = false
+        }
+        return check
+    }
+
+
+    var noithanh = document.querySelector("#noithanh") // input nội thành
+    var ngoaithanh = document.querySelector("#ngoaithanh") // input ngoại thành
+    var phivanchuyen = document.querySelector("#phivanchuyen") // input phí vận chuyển
+
+    //Thay đổi phí vận chuyển khi người dùng nhấn vào các ô input ngoại thành hoặc nội thành
+    noithanh.addEventListener("click", function() {
+        phivanchuyen.value = "30000"
+    })
+    ngoaithanh.addEventListener("click", function() {
+        phivanchuyen.value = "50000"
+    })
+
+
+    // Định nghĩa class để sau đó xử lí in html
+    class donhang{
+        constructor(tenKH, sdtKH, tongtien, vanchuyen){
+            this.tenKH = tenKH;
+            this.sdtKH = sdtKH;
+            this.tongtien = tongtien;
+            this.vanchuyen = vanchuyen;
+        }
+    }
+
+    //Khai báo mảng rỗng để lưu trữ danh sách các sản phẩm
+    var listdh = []
+
+    function show() {
+        let item = new donhang(namekh.value, sdt.value, totalmoney.textContent, phivanchuyen.value)
+        listdh.push(item) // Đẩy thông tin sản phẩm vào mảng listdh
+        showAgain();
+    }
+
+    function showAgain(){
+        UI = '' // Khởi tạo biến UI rỗng để lưu trữ chuỗi HTML kết quả
+        // Duyệt mảng listdh (danh sách đơn hàng) bằng phương thức forEach:
+        listdh.forEach((item, index) => {
+            UI += `
+                <tr>
+                    <td>${index + 1}</td>
+                    <td>${item.tenKH}</td>
+                    <td>${item.sdtKH}</td>
+                    <td>${item.tongtien}</td>
+                    <td>${item.vanchuyen}</td>
+                </tr>
+            `
+        })
+        document.querySelector(".renderUI").innerHTML = UI //gán nội dung của UI vào thẻ có class ".renderUI" (in HTML)
+    }
+
+</script>
+  </body>
+</html>

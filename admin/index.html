@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css-css/style.css">
+    <link rel="stylesheet" href="css-css/rps.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar_head">
+                <img src="../img/logo.png" alt="" width="70" height="43">
+            </div>
+
+            <div class="tongquan">
+                <a href="../view/index.php">
+                    <li class="menu-item sidebar-text-thin" aria-haspopup="true">
+                        <i class="fa-solid fa-square-poll-vertical"></i> Tổng quan
+                    </li>
+                </a>
+            </div>
+
+            <div class="tongquan">
+                <a href="../../layout/index.php">
+                    <li class="menu-item" aria-haspopup="true">
+                        <i class="fa-solid fa-globe"></i> CITY VIEW
+                    </li>
+                </a>
+            </div>
+
+            <span class="quanly">QUẢN LÝ</span>
+            <div class="list">
+                <ul>
+                    <a href="../ql_loaiphong/list.php" class="menu-link">
+                        <li class="menu-item" aria-haspopup="true">
+                            <p class=""><i class="fa-solid fa-list"></i> Quản lý Shop</p>
+                        </li>
+                    </a>
+                    <a href="../ql_phong/list.php" class="menu-link">
+                        <li class="menu-item" aria-haspopup="true">
+                            <p class=""><i class="fa-solid fa-list"></i> Quản lý tài khoản</p>
+
+                        </li>
+                    </a>
+                    <a href="./index.php?act=list_dichvu" class="menu-link">
+                        <li class="menu-item" aria-haspopup="true">
+                            <p class=""><i class="fa-solid fa-list"></i> Quản lý danh mục</p>
+
+                        </li>
+                    </a>
+                    <a href="../ql_binhluan/list.php" class="menu-link">
+                        <li class="menu-item" aria-haspopup="true">
+                            <p class=""><i class="fa-solid fa-list"></i> Quản lý hàng hóa</p>
+
+                        </li>
+                    </a>
+                    <a href="../ql_taikhoan/list.php" class="menu-link">
+                        <li class="menu-item" aria-haspopup="true">
+                            <p class=""><i class="fa-solid fa-list"></i> Thống kê số lượng bán</p>
+
+                        </li>
+                    </a>
+                    <a href="../ql_hoadon/list.php" class="menu-link">
+                        <li class="menu-item" aria-haspopup="true">
+                            <p class=""><i class="fa-solid fa-list"></i> Quản lý đơn hàng</p>
+
+                        </li>
+                    </a>
+                </ul>
+            </div>
+        </div>
+
+ <div class="delete"></div>
+        <main>
+            <div class="main-content">
+                <div class="tab-title">
+                    <span class="manager">Trang quản trị</span>
+<img src="../img/logo.jpg" alt="" class="logo-rps" style="width:100px;">
+
+                    <span class="name-user">Hi, Admin</span>
+                    <span class="bar"><i class="fa-solid fa-bars"></i></span>
+
+
+                </div>
+               
+
+
+            </div>
+        </div>
+
+
+        <script>
+            let link = document.querySelectorAll(".act-list")
+    
+            link.forEach(element => {
+                element.onclick = () => {
+                    link.forEach(nav => {
+                        nav.classList.remove("sidebar-text-thin");
+                    })
+                    element.classList.add("sidebar-text-thin");
+                }
+            })
+    
+    
+    
+            let close = document.querySelector(".delete")
+            let menu = document.querySelector(".sidebar")
+            let bar = document.querySelector("span.bar")
+            let icon = document.querySelector("span.bar i")
+            bar.onclick = () => {
+                menu.classList.toggle("off")
+            let isIcon = menu.classList.contains('off')
+            icon.classList = isIcon ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'
+                close.style.display = "block"
+            }
+    
+            close.onclick = () => {
+                menu.classList.toggle("off")
+                let isIcon = menu.classList.contains('off')
+                icon.classList = isIcon ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'
+                close.style.display = "none"
+    
+            }
+    
+    
+    
+        </script>
+    
+    </body>
+    
+    </html>
